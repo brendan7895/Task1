@@ -7,7 +7,7 @@ namespace Task1
     {
         protected int xPos;
         protected int yPos;
-        protected int HP;
+        protected int hP;
         protected int maxHP;
         protected int speed;
         protected int attack;
@@ -19,6 +19,7 @@ namespace Task1
         public int YPos { get => yPos; set => yPos = value; }
         public string Symbol { get => symbol; set => symbol = value; }
         public string Team { get => team; set => team = value; }
+        public int HP { get => hP; set => hP = value; }
 
         public Unit(int xPos, int yPos, int maxHP, int HP, int speed, int attack, int atkRange, string team, string symbol)
         {
