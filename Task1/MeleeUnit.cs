@@ -1,4 +1,6 @@
-﻿namespace Task1
+﻿using System;
+
+namespace Task1
 {
     public class MeleeUnit : Unit
     {
@@ -7,14 +9,22 @@
 
         }
 
-        public override int Attack(int atk)
+        public override void Attack()
         {
-            throw new System.NotImplementedException();
+            HP -= attack;
         }
 
         public override bool inRange(int enemyX, int enemyY)
         {
-            throw new System.NotImplementedException();
+            bool value = false;
+            int x = Math.Abs(xPos - enemyX);
+            int y = Math.Abs(yPos - enemyY);
+
+            if ((x+y) <= atkRange)
+            {
+                value = true;
+            }
+            return value;
         }
 
         public override bool isDead()
@@ -27,9 +37,13 @@
             return value;
         }
 
-        public override string toString()
+        public override string ToString()
         {
-            return Symbol + " " + Team + " " + XPos + " " + YPos;
+            if (HP <= 0)
+            {
+                Symbol = "Dead";
+            }
+            return Symbol + ", " + Team + ", " + XPos + ", " + YPos + ", "  + HP;
         }
     }
 }

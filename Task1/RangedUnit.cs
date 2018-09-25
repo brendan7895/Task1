@@ -9,9 +9,9 @@ namespace Task1
 
         }
 
-        public override int Attack(int atk)
+        public override void Attack()
         {
-            throw new System.NotImplementedException();
+            HP -= attack;
         }
 
         public override bool inRange(int enemyX, int enemyY)
@@ -37,9 +37,13 @@ namespace Task1
             return value;
         }
 
-        public override string toString()
+        public override string ToString()
         {
-            return Symbol + " " + Team + " " + XPos + " " + YPos;
+            if (HP <= 0)
+            {
+                Symbol = "Dead";
+            }
+            return Symbol + ", " + Team + ", " + XPos + ", " + YPos + ", " + HP;
         }
     }
 }

@@ -33,10 +33,10 @@ namespace Task1
             this.Symbol = symbol;
         }
 
-        public abstract int Attack(int atk);
+        public abstract void Attack();
         public abstract bool inRange(int enemyX, int enemyY);
         public abstract bool isDead();
-        public abstract string toString();
+        public abstract string ToString();
 
         public void updatePos(string direction) //changes the x or y value based on movement
         {
@@ -83,11 +83,8 @@ namespace Task1
                         closest = x + y;
                         temp = unit[i];
                     }
-                }
-                //closest = x + y;           
+                }        
             }
-
-            Console.WriteLine(closest);
             return temp;
         }
 

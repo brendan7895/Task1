@@ -34,6 +34,7 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.lblTime = new System.Windows.Forms.Label();
             this.tmTick = new System.Windows.Forms.Timer(this.components);
+            this.cmbInfo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblMap
@@ -49,6 +50,7 @@
             // 
             // btnStart
             // 
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.Location = new System.Drawing.Point(628, 318);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(110, 60);
@@ -59,6 +61,7 @@
             // 
             // btnStop
             // 
+            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStop.Location = new System.Drawing.Point(628, 384);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(110, 60);
@@ -82,11 +85,21 @@
             this.tmTick.Interval = 1000;
             this.tmTick.Tick += new System.EventHandler(this.tmTick_Tick);
             // 
+            // cmbInfo
+            // 
+            this.cmbInfo.FormattingEnabled = true;
+            this.cmbInfo.Location = new System.Drawing.Point(477, 483);
+            this.cmbInfo.Name = "cmbInfo";
+            this.cmbInfo.Size = new System.Drawing.Size(261, 24);
+            this.cmbInfo.TabIndex = 4;
+            this.cmbInfo.SelectedIndexChanged += new System.EventHandler(this.cmbInfo_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 617);
+            this.Controls.Add(this.cmbInfo);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
@@ -106,6 +119,7 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Timer tmTick;
+        private System.Windows.Forms.ComboBox cmbInfo;
     }
 }
 

@@ -16,5 +16,14 @@
             gameMap.close();
             return gameMap.Redraw();
         }
+
+        public string UnitsString(int i)
+        {
+            return gameMap.UnitsCombo(i);
+        }
+        public int numUnit()
+        {
+            return gameMap.numUnit();
+        }
     }
 }

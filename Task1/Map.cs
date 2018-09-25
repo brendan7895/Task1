@@ -31,7 +31,7 @@ namespace Task1
 
                 if (teamRand == 0)
                 {
-                    units[i] = new MeleeUnit(x, y, 100, 100, 1, 5, 2, Teams(), "F");
+                    units[i] = new MeleeUnit(x, y, 100, 100, 1, 10, 2, Teams().ToLower(), "F");
                 }
                 if (teamRand == 1)
                 {
@@ -47,33 +47,44 @@ namespace Task1
             for (int i = 0; i < numUnits; i++)
             {
                 Unit temp = units[i].closestUnit(units);
-
-                if(units[i].XPos < temp.XPos)
+                if(units[i].inRange(temp.XPos, temp.YPos) == false)
                 {
-                    units[i].updatePos("d");
-                    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                    mapArr[units[i].XPos - 1, units[i].YPos] = ".";
+                    if (units[i].XPos < temp.XPos)
+                    {
+                        units[i].updatePos("d");
+                        mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
+                        mapArr[units[i].XPos - 1, units[i].YPos] = ".";
+                    }
+
+                    if (units[i].XPos > temp.XPos)
+                    {
+                        units[i].updatePos("a");
+                        mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
+                        mapArr[units[i].XPos + 1, units[i].YPos] = ".";
+                    }
+
+                    if (units[i].YPos < temp.YPos)
+                    {
+                        units[i].updatePos("s");
+                        mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
+                        mapArr[units[i].XPos, units[i].YPos - 1] = ".";
+                    }
+
+                    if (units[i].YPos > temp.YPos)
+                    {
+                        units[i].updatePos("w");
+                        mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
+                        mapArr[units[i].XPos, units[i].YPos + 1] = ".";
+                    }
                 }
-
-                if(units[i].XPos > temp.XPos)
+                
+                else if(units[i].inRange(temp.XPos, temp.YPos) == true)
                 {
-                    units[i].updatePos("a");
-                    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                    mapArr[units[i].XPos + 1, units[i].YPos] = ".";
-                }
-
-                if(units[i].YPos < temp.YPos)
-                {
-                    units[i].updatePos("s");
-                    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                    mapArr[units[i].XPos, units[i].YPos - 1] = ".";
-                }
-
-                if (units[i].YPos > temp.YPos)
-                {
-                    units[i].updatePos("w");
-                    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                    mapArr[units[i].XPos, units[i].YPos + 1] = ".";
+                    if(units[i].isDead() == false)
+                    {
+                        units[i].Attack();
+                    }
+                    
                 }
 
             }
@@ -86,6 +97,11 @@ namespace Task1
                 units[k].closestUnit(units);
             }
 
+        }
+
+        public int numUnit()
+        {
+            return numUnits;
         }
 
         public string Teams()
@@ -116,6 +132,11 @@ namespace Task1
                 value += "\n";
             }
             return value;
+        }
+
+        public string UnitsCombo(int i)
+        {
+            return units[i].ToString();
         }
     }
 }
