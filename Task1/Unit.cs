@@ -33,11 +33,9 @@ namespace Task1
             this.Symbol = symbol;
         }
 
-        public abstract int Move(string direction);
         public abstract int Attack(int atk);
         public abstract bool inRange(int enemyX, int enemyY);
-        //public abstract int closestUnit(int enemyX, int enemyY);
-        public abstract bool isDead(int hp);
+        public abstract bool isDead();
         public abstract string toString();
 
         public void updatePos(string direction) //changes the x or y value based on movement
@@ -51,28 +49,29 @@ namespace Task1
                     break;
                 case "a":
                     {
-                        xPos = xPos - 1;                        
+                        xPos = xPos - 1;
                     }
                     break;
                 case "s":
                     {
-                        yPos = yPos + 1;                       
+                        yPos = yPos + 1;
                     }
                     break;
                 case "d":
                     {
-                        xPos = xPos + 1;                       
+                        xPos = xPos + 1;
                     }
                     break;
             }
         }
 
-        public int closestUnit(Unit[] unit)
+        public Unit closestUnit(Unit[] unit)
         {
+            Unit temp = null;
             int closest = 0;
             int x = xPos;
             int y = yPos;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < unit.Length; i++)
             {
                 if (unit[i].team != team)
                 {
@@ -82,16 +81,15 @@ namespace Task1
                     if (closest < (x + y))
                     {
                         closest = x + y;
-                        //Console.WriteLine(closest);
+                        temp = unit[i];
                     }
                 }
-                //closest = x + y;
-
-
+                //closest = x + y;           
             }
 
             Console.WriteLine(closest);
-            return closest;
+            return temp;
         }
+
     }
 }

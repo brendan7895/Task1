@@ -4,7 +4,7 @@ namespace Task1
     public partial class Map
     {
         Random rand = new Random();
-        int numUnits = 4; //number of units to be placed
+        int numUnits = 5; //number of units to be placed
         string[,] mapArr = new string[20, 20]; //map array
 
         public Unit[] units; 
@@ -40,14 +40,6 @@ namespace Task1
                 mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
             }
 
-            //units[0] = new MeleeUnit(0, 0, 100, 100, 1, 5, 2, Team(), "E");
-            //units[1] = new MeleeUnit(0, 19, 100, 100, 1, 5, 2, Team(), "F");
-            //units[2] = new MeleeUnit(19, 0, 100, 100, 1, 5, 2, Team(), "E");
-            //units[3] = new MeleeUnit(19, 19, 100, 100, 1, 5, 2, Team(), "F");
-            //for (int i = 0; i < numUnits; i++)
-            //{
-            //    mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
-            //}
         }
 
         public void moveUnit()
@@ -56,75 +48,40 @@ namespace Task1
             {
                 Unit temp = units[i].closestUnit(units);
 
+                if(units[i].XPos < temp.XPos)
+                {
+                    units[i].updatePos("d");
+                    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
+                    mapArr[units[i].XPos - 1, units[i].YPos] = ".";
+                }
 
+                if(units[i].XPos > temp.XPos)
+                {
+                    units[i].updatePos("a");
+                    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
+                    mapArr[units[i].XPos + 1, units[i].YPos] = ".";
+                }
 
-                //if (units[i].XPos == 0)
-                //{
-                //    units[i].updatePos("d");
-                //    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                //    mapArr[units[i].XPos - 1, units[i].YPos] = ".";
-                //}
-                //if(units[i].XPos == 19)
-                //{
-                //    units[i].updatePos("a");
-                //    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                //    mapArr[units[i].XPos + 1, units[i].YPos] = ".";
-                //}
-                //if(units[i].YPos == 0)
-                //{
-                //    units[i].updatePos("s");
-                //    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                //    mapArr[units[i].XPos, units[i].YPos - 1] = ".";
-                //}
-                //if(units[i].YPos == 19)
-                //{
-                //    units[i].updatePos("w");
-                //    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                //    mapArr[units[i].XPos, units[i].YPos + 1] = ".";
-                //}
+                if(units[i].YPos < temp.YPos)
+                {
+                    units[i].updatePos("s");
+                    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
+                    mapArr[units[i].XPos, units[i].YPos - 1] = ".";
+                }
 
-                //else
-                //{
-                //    int a = rand.Next(0, 4);
-                //    switch (a)
-                //    {
-                //        case 0:
-                //            {
-                //                units[i].updatePos("d");
-                //                mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                //                mapArr[units[i].XPos - 1, units[i].YPos] = ".";
-                //            }
-                //            break;
-                //        case 1:
-                //            {
-                //                units[i].updatePos("a");
-                //                mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                //                mapArr[units[i].XPos + 1, units[i].YPos] = ".";
-                //            }
-                //            break;
-                //        case 2:
-                //            {
-                //                units[i].updatePos("w");
-                //                mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                //                mapArr[units[i].XPos, units[i].YPos + 1] = ".";
-                //            }
-                //            break;
-                //        case 3:
-                //            {
-                //                units[i].updatePos("s");
-                //                mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
-                //                mapArr[units[i].XPos, units[i].YPos - 1] = ".";
-                //            }
-                //            break;
-                //    }
-                //}
-                
+                if (units[i].YPos > temp.YPos)
+                {
+                    units[i].updatePos("w");
+                    mapArr[units[i].XPos, units[i].YPos] = units[i].Team;
+                    mapArr[units[i].XPos, units[i].YPos + 1] = ".";
+                }
+
             }
             
         }
         public void close()
         {
-            for (int k = 0; k < 4; k++)
+            for (int k = 0; k < numUnits; k++)
             {
                 units[k].closestUnit(units);
             }

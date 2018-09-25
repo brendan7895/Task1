@@ -1,4 +1,6 @@
-﻿namespace Task1
+﻿using System;
+
+namespace Task1
 {
     public class RangedUnit : Unit
     {
@@ -12,21 +14,27 @@
             throw new System.NotImplementedException();
         }
 
-
-
         public override bool inRange(int enemyX, int enemyY)
         {
-            throw new System.NotImplementedException();
+            bool value = false;
+            int x = Math.Abs(xPos - enemyX);
+            int y = Math.Abs(yPos - enemyY);
+
+            if ((x + y) <= atkRange)
+            {
+                value = true;
+            }
+            return value;
         }
 
-        public override bool isDead(int hp)
+        public override bool isDead()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override int Move(string direction)
-        {
-            throw new System.NotImplementedException();
+            bool value = false;
+            if (HP <= 0)
+            {
+                value = true;
+            }
+            return value;
         }
 
         public override string toString()
