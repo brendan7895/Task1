@@ -7,11 +7,13 @@
         public void start()
         {
             gameMap.generate();
+            
         }
 
         public string playGame()
         {
-            gameMap.moveUnit();
+            //gameMap.moveUnit();
+            gameMap.closetUnit();
             return gameMap.Redraw();
         }
     }

@@ -35,11 +35,13 @@ namespace Task1
         private void btnStart_Click(object sender, EventArgs e)
         {
             tmTick.Enabled = true;
+            tmTick.Start();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
             tmTick.Enabled = false;
+            tmTick.Stop();
         }
     }
 }
