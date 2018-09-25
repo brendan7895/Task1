@@ -34,7 +34,7 @@
 
         public override string toString()
         {
-            return symbol + " " + team + " " + xPos + " " + yPos;
+            return Symbol + " " + team + " " + XPos + " " + YPos;
         }
     }
 }
