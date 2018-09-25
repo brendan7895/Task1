@@ -39,9 +39,9 @@ namespace Task1
             //    }
             //    mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
             //}
-            units[0] = new MeleeUnit(0, 0, 100, 100, 1, 5, 2, Team(), "F");
+            units[0] = new MeleeUnit(0, 0, 100, 100, 1, 5, 2, Team(), "E");
             units[1] = new MeleeUnit(0, 19, 100, 100, 1, 5, 2, Team(), "F");
-            units[2] = new MeleeUnit(19, 0, 100, 100, 1, 5, 2, Team(), "F");
+            units[2] = new MeleeUnit(19, 0, 100, 100, 1, 5, 2, Team(), "E");
             units[3] = new MeleeUnit(19, 19, 100, 100, 1, 5, 2, Team(), "F");
             for (int i = 0; i < numUnits; i++)
             {
@@ -62,6 +62,8 @@ namespace Task1
         {
             for (int i = 0; i < numUnits; i++)
             {
+                units[i].closestUnit(units, i);
+
                 if (units[i].XPos == 0)
                 {
                     units[i].updatePos("d");
@@ -87,7 +89,7 @@ namespace Task1
                     mapArr[units[i].XPos, units[i].YPos + 1] = ".";
                 }
 
-                else //if(units[i].XPos != 19 && units[i].YPos != 19 && units[i].XPos != 0 && units[i].YPos != 0)
+                else
                 {
                     int a = rand.Next(0, 4);
                     switch (a)
@@ -127,25 +129,7 @@ namespace Task1
             
         }
 
-        public void closetUnit()
-        {
-            int x = units[0].XPos;
-            int y = units[0].YPos;
-
-            int x1 = units[2].XPos;
-            int y1 = units[2].YPos;
-
-            int abs = (Math.Abs(x - x1)) + (Math.Abs(y - y1));
-
-            if(x < x1)
-            {
-                units[0].updatePos("d");
-                mapArr[units[0].XPos, units[0].YPos] = units[0].Symbol;
-                mapArr[units[0].XPos - 1, units[0].YPos] = ".";
-            }
-            Console.WriteLine(abs);
-        }
-
+        
         public string Team()
         {
             int i = rand.Next(0, 2);

@@ -1,4 +1,6 @@
-﻿namespace Task1
+﻿using System;
+
+namespace Task1
 {
     
     public abstract class Unit
@@ -34,11 +36,11 @@
         public abstract int Move(string direction);
         public abstract int Attack(int atk);
         public abstract bool inRange(int enemyX, int enemyY);
-        public abstract int closestUnit(int enemyX, int enemyY);
+        //public abstract int closestUnit(int enemyX, int enemyY);
         public abstract bool isDead(int hp);
         public abstract string toString();
 
-        public void updatePos(string direction)
+        public void updatePos(string direction) //changes the x or y value based on movement
         {
             switch (direction)
             {
@@ -63,6 +65,31 @@
                     }
                     break;
             }
+        }
+
+        public int closestUnit(Unit[] unit, int k)
+        {
+            int closest = 0;
+            int x = xPos;
+            int y = yPos;
+            for(int i = 0; i < 4; i++)
+            {
+                if (unit[k].team != team && k != i)
+                {
+                    x = Math.Abs(unit[i].XPos - unit[i].YPos);
+                    y = Math.Abs(unit[i].XPos - unit[i].YPos);
+                }
+                closest = x + y;
+                if (closest > (x + y))
+                {
+                    closest = x + y;
+                    //Console.WriteLine(closest);
+                }
+                
+            }
+
+            Console.WriteLine(closest);
+            return closest;
         }
     }
 }

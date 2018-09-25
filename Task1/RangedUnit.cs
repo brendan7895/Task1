@@ -12,10 +12,7 @@
             throw new System.NotImplementedException();
         }
 
-        public override int closestUnit(int enemyX, int enemyY)
-        {
-            throw new System.NotImplementedException();
-        }
+
 
         public override bool inRange(int enemyX, int enemyY)
         {
