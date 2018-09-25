@@ -12,8 +12,8 @@
 
         public string playGame()
         {
-            //gameMap.moveUnit();
-            gameMap.closetUnit();
+            gameMap.moveUnit();
+            //gameMap.closetUnit();
             return gameMap.Redraw();
         }
     }

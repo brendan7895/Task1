@@ -60,11 +60,70 @@ namespace Task1
 
         public void moveUnit()
         {
-            units[0].updatePos("d");
-           // int temp = units[0].XPos;
-            mapArr[units[0].XPos, units[0].YPos] = units[0].Symbol;
-            mapArr[units[0].XPos-1, units[0].YPos] = ".";
+            for (int i = 0; i < numUnits; i++)
+            {
+                if (units[i].XPos == 0)
+                {
+                    units[i].updatePos("d");
+                    mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
+                    mapArr[units[i].XPos - 1, units[i].YPos] = ".";
+                }
+                if(units[i].XPos == 19)
+                {
+                    units[i].updatePos("a");
+                    mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
+                    mapArr[units[i].XPos + 1, units[i].YPos] = ".";
+                }
+                if(units[i].YPos == 0)
+                {
+                    units[i].updatePos("s");
+                    mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
+                    mapArr[units[i].XPos, units[i].YPos - 1] = ".";
+                }
+                if(units[i].YPos == 19)
+                {
+                    units[i].updatePos("w");
+                    mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
+                    mapArr[units[i].XPos, units[i].YPos + 1] = ".";
+                }
 
+                else //if(units[i].XPos != 19 && units[i].YPos != 19 && units[i].XPos != 0 && units[i].YPos != 0)
+                {
+                    int a = rand.Next(0, 4);
+                    switch (a)
+                    {
+                        case 0:
+                            {
+                                units[i].updatePos("d");
+                                mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
+                                mapArr[units[i].XPos - 1, units[i].YPos] = ".";
+                            }
+                            break;
+                        case 1:
+                            {
+                                units[i].updatePos("a");
+                                mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
+                                mapArr[units[i].XPos + 1, units[i].YPos] = ".";
+                            }
+                            break;
+                        case 2:
+                            {
+                                units[i].updatePos("w");
+                                mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
+                                mapArr[units[i].XPos, units[i].YPos + 1] = ".";
+                            }
+                            break;
+                        case 3:
+                            {
+                                units[i].updatePos("s");
+                                mapArr[units[i].XPos, units[i].YPos] = units[i].Symbol;
+                                mapArr[units[i].XPos, units[i].YPos - 1] = ".";
+                            }
+                            break;
+                    }
+                }
+                
+            }
             
         }
 
