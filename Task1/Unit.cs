@@ -67,25 +67,27 @@ namespace Task1
             }
         }
 
-        public int closestUnit(Unit[] unit, int k)
+        public int closestUnit(Unit[] unit)
         {
             int closest = 0;
             int x = xPos;
             int y = yPos;
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (unit[k].team != team && k != i)
+                if (unit[i].team != team)
                 {
-                    x = Math.Abs(unit[i].XPos - unit[i].YPos);
-                    y = Math.Abs(unit[i].XPos - unit[i].YPos);
+                    x = Math.Abs(this.XPos - unit[i].XPos);
+                    y = Math.Abs(this.YPos - unit[i].YPos);
+
+                    if (closest < (x + y))
+                    {
+                        closest = x + y;
+                        //Console.WriteLine(closest);
+                    }
                 }
-                closest = x + y;
-                if (closest > (x + y))
-                {
-                    closest = x + y;
-                    //Console.WriteLine(closest);
-                }
-                
+                //closest = x + y;
+
+
             }
 
             Console.WriteLine(closest);

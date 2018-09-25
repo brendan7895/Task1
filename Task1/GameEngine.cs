@@ -13,8 +13,7 @@
         public string playGame()
         {
             gameMap.moveUnit();
-
-
+            gameMap.close();
             return gameMap.Redraw();
         }
     }
