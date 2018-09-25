@@ -34,7 +34,7 @@
 
         public override string toString()
         {
-            throw new System.NotImplementedException();
+            return symbol + " " + team + " " + xPos + " " + yPos;
         }
     }
 }
