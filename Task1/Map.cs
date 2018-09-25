@@ -52,6 +52,7 @@ namespace Task1
 
         public void moveUnit()
         {
+            units[0].XPos++;
         }
 
         public string Team()
@@ -68,6 +69,20 @@ namespace Task1
                 sym = "M";
             }
             return sym;
+        }
+
+        public string Redraw()
+        {
+            string value = "";
+            for (int i = 0; i < 20; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    value += mapArr[j, i];
+                }
+                value += "\n";
+            }
+            return value;
         }
     }
 }

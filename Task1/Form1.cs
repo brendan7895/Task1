@@ -12,7 +12,9 @@ namespace Task1
 {
     public partial class Form1 : Form
     {
-        Map m = new Map();
+        GameEngine Game = new GameEngine();
+        int time = 0;
+        
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +22,24 @@ namespace Task1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            m.generate();
+            Game.start();
+        }
+
+        private void tmTick_Tick(object sender, EventArgs e)
+        {
+            lblMap.Text = Game.playGame();
+            lblTime.Text = time.ToString();
+            time++;
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            tmTick.Enabled = true;
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            tmTick.Enabled = false;
         }
     }
 }
